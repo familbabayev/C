@@ -162,6 +162,15 @@ void reverse(struct node **head){
 
 }
 
+void freelist(struct node *head){
+	struct node *temp;
+
+	while( head != NULL ){
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+}
 
 int main(){
 	struct node *head = NULL;
@@ -192,6 +201,9 @@ int main(){
 	traverse(head);
 	reverse(&head);
 	traverse(head);
+
+	freelist(head);
+	traverse(head);	
 	
 
 	return 0;
